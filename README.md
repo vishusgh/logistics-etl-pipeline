@@ -1,5 +1,13 @@
 # End-to-End Logistics ETL Pipeline & Executive Analytics
 
+### 💻 Tech Stack Used
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![BigQuery](https://img.shields.io/badge/BigQuery-4285F4?style=for-the-badge&logo=googlebigquery&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
+![PowerBI](https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
+
 ## 📌 Project Overview
 This project demonstrates an end-to-end data engineering and analytics pipeline designed to optimize enterprise logistics operations. Bridging the gap between raw data engineering and strategic decision-making, raw, uncleaned freight and operational data spanning three separate tables were extracted, programmatically cleaned, and transformed using Python. The refined master dataset was then staged in a cloud data warehouse (Google BigQuery) for targeted SQL analysis, and finally modeled in Power BI to deliver interactive, executive-level business insights.
 
@@ -59,11 +67,13 @@ Fleet Efficiency Bottlenecks: Average transit time remains static around 7-8 day
 
 ## 📁 Repository Structure
 ```text
-├── Data/                           # Directory for raw/anonymized data samples
+├── Data/                             
+│   ├── raw_logistics_data.xlsx         # Initial uncleaned dataset
+│   └── cleaned_master_logistics.xlsx   # Transformed dataset ready for BI
 ├── Scripts/
-│   ├── data_cleaning.py            # Python Pandas ETL script
-│   └── analysis_queries.sql        # Production-ready SQL queries
+│   ├── data_cleaning_pipeline.ipynb    # Python Jupyter Notebook for ETL & EDA
+│   └── analysis_queries.sql            # Production-ready SQL queries
 ├── Dashboard/
-│   └── Logistics_Performance.pbix  # Power BI Desktop Model
-├── Logistic_Power_BI_dashboard.png # Dashboard preview image
-└── README.md                       # Case study documentation
+│   └── Logistics_Performance.pbix      # Power BI Desktop Model
+├── Logistic_Power_BI_dashboard.png     # Dashboard preview image
+└── README.md                           # Case study documentation
