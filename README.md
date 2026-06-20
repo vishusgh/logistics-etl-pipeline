@@ -1,7 +1,7 @@
 # End-to-End Logistics ETL Pipeline & Executive Analytics
 
 ## 📌 Project Overview
-This project demonstrates an end-to-end data engineering and analytics pipeline designed to optimize logistics operations. Raw, uncleaned freight and operational data spanning three separate tables were extracted, programmatically cleaned and transformed using Python, staged in a cloud data warehouse (Google BigQuery) for targeted SQL analysis, and modeled in Power BI to deliver executive-level business insights.
+This project demonstrates an end-to-end data engineering and analytics pipeline designed to optimize enterprise logistics operations. Bridging the gap between raw data engineering and strategic decision-making, raw, uncleaned freight and operational data spanning three separate tables were extracted, programmatically cleaned, and transformed using Python. The refined master dataset was then staged in a cloud data warehouse (Google BigQuery) for targeted SQL analysis, and finally modeled in Power BI to deliver interactive, executive-level business insights.
 
 ---
 
@@ -11,14 +11,14 @@ An enterprise logistics provider handles thousands of cross-country shipments bu
 ### Core Objectives:
 1. **Data Quality Framework:** Programmatically resolve structural errors, missing data logic, and invalid numeric values.
 2. **Data Warehousing & Optimization:** Stage a unified master dataset in a cloud environment optimized for SQL performance.
-3. **Executive Reporting:** Build an optimized reporting solution tracking key operational KPIs and employee productivity metrics.
+3. **Executive Reporting:** Build an optimized reporting solution tracking key operational KPIs, regional revenue, and employee productivity metrics.
 
 ---
 
 ## 🏗️ System Architecture & Workflow
 
 ### 1. Extract & Transform Phase (Python / Pandas)
-The ingestion script profile and clean three raw tables: `Logistics Fact`, `Customer Dimension`, and `Employee Dimension`.
+The ingestion script profiled and cleaned three raw tables: `Logistics Fact`, `Customer Dimension`, and `Employee Dimension`.
 * **Data Integrity & Joins:** Validated primary/foreign key mappings to handle orphaned records before executing `Left Joins` to produce a unified master dataset.
 * **Text Standardization:** Consolidated disparate categorical entries (e.g., forcing inconsistent strings into uniform `'COD'` and `'PREPAID'` values).
 * **Logical Date Correction:** Standardized text strings into proper datetime objects and programmatically mapped `Delivery_Date` to null (`NaT`) for 'Pending' shipments to prevent skewing average transit calculations.
@@ -42,3 +42,28 @@ Targeted analytical queries were engineered directly inside BigQuery to address 
   Total Revenue = SUM('Master_Logistics'[Freight_Amount_USD])
   Total Shipments = COUNT('Master_Logistics'[Booking_ID])
   Average Delivery Days = AVERAGE('Master_Logistics'[Delivery_Days])
+```
+📊 Dashboard & Executive Insights
+
+![Logistics Dashboard](Logistic_Power_BI_dashboard.png)
+
+Key Strategic Takeaways:
+High-Level Performance: Total realized revenue reached $91.92M across 9K shipments, averaging a 7.6-day delivery window.
+
+Revenue Hubs: Asset optimization should be prioritized across major destination hubs including Miami ($8.6M), Denver ($7.7M), and Dallas ($7.5M).
+
+COD Risk Mitigation: Cash-on-Delivery (COD) volumes are evenly distributed (~20% each) across origin nodes. Rather than regional targeting, the organization should roll out a standardized digital payment incentive program to minimize localized cash-handling overhead.
+
+Fleet Efficiency Bottlenecks: Average transit time remains static around 7-8 days across all core vehicle classes (Mini Trucks, Trailers, Containers). This strongly implies transit delays are a byproduct of centralized route-planning rather than vehicle capacity limits.
+
+
+## 📁 Repository Structure
+```text
+├── Data/                           # Directory for raw/anonymized data samples
+├── Scripts/
+│   ├── data_cleaning.py            # Python Pandas ETL script
+│   └── analysis_queries.sql        # Production-ready SQL queries
+├── Dashboard/
+│   └── Logistics_Performance.pbix  # Power BI Desktop Model
+├── Logistic_Power_BI_dashboard.png # Dashboard preview image
+└── README.md                       # Case study documentation
