@@ -69,8 +69,8 @@ Fleet Efficiency Bottlenecks: Average transit time remains static around 7-8 day
 ```text
 ├── Data/                             
 │   ├── raw_logistics_data.xlsx         # Initial uncleaned dataset
-│   └── cleaned_master_logistics.xlsx   # Transformed dataset ready for BI
-├── Scripts/
+│   └── cleaned_master_logistics.csv   # Transformed dataset ready for BI
+├── Script/
 │   ├── data_cleaning_pipeline.ipynb    # Python Jupyter Notebook for ETL & EDA
 │   └── analysis_queries.sql            # Production-ready SQL queries
 ├── Dashboard/
